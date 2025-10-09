@@ -58,14 +58,15 @@ int main() {
     Student* studenti = NULL;
     int broj_studenata = readData("studenti.txt", &studenti);
     if (broj_studenata == -1) {
-        printf("Greška pri èitanju datoteke ili alokaciji memorije.\n");
+        printf("GreÅ¡ka pri Äitanju datoteke ili alokaciji memorije.\n");
         return 1;
     }
     if (printData(studenti, broj_studenata) == -1) {
-        printf("Greška pri ispisu podataka.\n");
+        printf("GreÅ¡ka pri ispisu podataka.\n");
         free(studenti);
         return 1;
     }
     free(studenti);
     return 0;
 }
+
