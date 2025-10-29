@@ -45,7 +45,7 @@ Student* findBySurname(Student* head, char surname[]) {
     return NULL;
 }
 
-// Add after a specific surname
+
 Student* addAfter(Student* head, char targetSurname[], Student* newStudent) {
     Student* target = findBySurname(head, targetSurname);
     if (!target) {
@@ -57,7 +57,7 @@ Student* addAfter(Student* head, char targetSurname[], Student* newStudent) {
     return head;
 }
 
-// Add before a specific surname
+
 Student* addBefore(Student* head, char targetSurname[], Student* newStudent) {
     if (!head) return head;
     if (strcmp(head->surname, targetSurname) == 0) {
@@ -218,3 +218,4 @@ int main() {
         }
     }
 }
+
