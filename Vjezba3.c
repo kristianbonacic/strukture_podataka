@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -41,6 +42,25 @@ Student* findBySurname(Student* head, char surname[]) {
     return NULL;
 }
 
+Student* deleteNode(Student* head, char surname[]) {
+    if (!head) return NULL;
+    Student* temp = head;
+    Student* prev = NULL;
+
+    while (temp != NULL && strcmp(temp->surname, surname) != 0) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (!temp) return head;
+
+    if (prev) prev->next = temp->next;
+    else head = temp->next;
+
+    free(temp);
+    return head;
+}
+
 Student* printList(Student* head) {
     Student* temp = head;
     while (temp != NULL) {
@@ -48,4 +68,42 @@ Student* printList(Student* head) {
         temp = temp->next;
     }
     return head;
+}
+
+int main() {
+    Student* head = NULL;
+    int choice, age;
+    char name[50], surname[50];
+
+    while (1) {
+        printf("\n--- MENU ---\n");
+        printf("1 - Add at beginning\n2 - Add at end\n3 - Delete by surname\n4 - Print\n0 - Exit\n");
+        printf("Choice: ");
+        scanf("%d", &choice);
+
+        switch(choice) {
+            case 1:
+                printf("Enter name, surname, age: ");
+                scanf("%s %s %d", name, surname, &age);
+                head = addBeginning(head, createStudent(name, surname, age));
+                break;
+            case 2:
+                printf("Enter name, surname, age: ");
+                scanf("%s %s %d", name, surname, &age);
+                head = addEnd(head, createStudent(name, surname, age));
+                break;
+            case 3:
+                printf("Enter surname to delete: ");
+                scanf("%s", surname);
+                head = deleteNode(head, surname);
+                break;
+            case 4:
+                head = printList(head);
+                break;
+            case 0:
+                return 0;
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
 }
