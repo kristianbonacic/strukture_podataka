@@ -1,4 +1,4 @@
-#indef TIPOVI_H
+#ifndef TIPOVI_H
 #define TIPOVI_H
 
 typedef struct Item {
@@ -13,5 +13,6 @@ typedef struct Receipt {
 	Item* itemsHead;
 	Struct Receipt* next;
 }; Receipt;
+
 
 #endif
