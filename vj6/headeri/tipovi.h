@@ -11,8 +11,9 @@ typedef struct Item {
 typedef struct Receipt {
 	char date[11];
 	Item* itemsHead;
-	Struct Receipt* next;
-}; Receipt;
+	struct Receipt* next;
+}Receipt;
 
 
 #endif
+
